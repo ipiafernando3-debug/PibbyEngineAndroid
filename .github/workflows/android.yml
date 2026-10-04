@@ -15,11 +15,13 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Install Haxe and Setup Environment
+      - name: Setup Haxe
+        uses: haxe-io/setup-haxe@v2
+        with:
+          haxe-version: '4.3.4'
+
+      - name: Configure Haxelib
         run: |
-          sudo add-apt-repository ppa:haxe/snapshots -y
-          sudo apt-get update
-          sudo apt-get install -y haxe libgl1-mesa-dev libglu1-mesa-dev
           mkdir -p ~/haxelib
           haxelib setup ~/haxelib
 
