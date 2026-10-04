@@ -30,8 +30,18 @@ jobs:
           haxelib install lime
           haxelib install openfl
           haxelib install flixel
-          haxelib run lime setup -y
-          haxelib run lime setup android -y
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android NDK and Configure Lime
+        run: |
+          sdkmanager "ndk;23.1.7779620"
+          echo "ANDROID_SDK=$ANDROID_SDK_ROOT" >> $GITHUB_ENV
+          echo "ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.1.7779620" >> $GITHUB_ENV
+          haxelib run lime config ANDROID_SETUP true
+          haxelib run lime config ANDROID_SDK $ANDROID_SDK_ROOT
+          haxelib run lime config ANDROID_NDK_ROOT $ANDROID_SDK_ROOT/ndk/23.1.7779620
 
       - name: Build Android APK
         run: |
