@@ -30,8 +30,7 @@ jobs:
           haxelib install lime
           haxelib install openfl
           haxelib install flixel
-          haxelib install flixel-addons
-          haxelib install flixel-ui
+          haxelib run flixel setup -y
 
       - name: Setup Android SDK Manually
         run: |
