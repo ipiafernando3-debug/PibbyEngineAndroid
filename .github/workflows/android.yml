@@ -20,6 +20,11 @@ jobs:
         with:
           haxe-version: '4.3.4'
 
+      - name: Configure Haxelib
+        run: |
+          mkdir -p ~/haxelib
+          echo ~/haxelib | haxelib setup
+
       - name: Install Haxe Libraries
         run: |
           haxelib install lime
@@ -27,7 +32,6 @@ jobs:
           haxelib install flixel
           haxelib install flixel-addons
           haxelib install flixel-ui
-          haxelib install flixel-tools
 
       - name: Setup Android SDK Manually
         run: |
