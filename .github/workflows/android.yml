@@ -20,11 +20,6 @@ jobs:
         with:
           haxe-version: '4.3.4'
 
-      - name: Configure Haxelib
-        run: |
-          mkdir -p ~/haxelib
-          haxelib setup ~/haxelib
-
       - name: Install Haxe Libraries
         run: |
           haxelib install lime
