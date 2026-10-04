@@ -1,0 +1,43 @@
+name: Build APK
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Install Haxe and Setup Environment
+        run: |
+          sudo add-apt-repository ppa:haxe/snapshots -y
+          sudo apt-get update
+          sudo apt-get install -y haxe libgl1-mesa-dev libglu1-mesa-dev
+          mkdir -p ~/haxelib
+          haxelib setup ~/haxelib
+
+      - name: Install Haxe Libraries
+        run: |
+          haxelib install lime
+          haxelib install openfl
+          haxelib install flixel
+          haxelib run lime setup -y
+          haxelib run lime setup android -y
+
+      - name: Build Android APK
+        run: |
+          haxelib run lime build android -final
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Pibby-Engine-APK
+          path: export/android/bin/app/build/outputs/apk/release/*.apk
+          
