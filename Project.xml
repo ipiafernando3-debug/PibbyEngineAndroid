@@ -23,7 +23,7 @@
 	<assets path="assets" rename="assets" />
 	
 	<!-- Android Specific Settings -->
-	<android tax-version="33" target-sdk-version="34" min-sdk-version="21" />
+	<android target-sdk-version="34" min-sdk-version="21" />
 	
 	<!-- Permissions -->
 	<app android:hardwareAccelerated="true" />
