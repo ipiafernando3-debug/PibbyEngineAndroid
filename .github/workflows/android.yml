@@ -15,18 +15,19 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Setup Haxe and Dependencies
+      - name: Setup Haxe
         uses: krdlab/setup-haxe@v1
         with:
           haxe-version: '4.3.4'
-          haxelib-setup: true
-          haxelib-dependencies: |
-            lime
-            openfl
-            flixel
-            flixel-addons
-            flixel-ui
-            flixel-tools
+
+      - name: Install Haxe Libraries
+        run: |
+          haxelib install lime
+          haxelib install openfl
+          haxelib install flixel
+          haxelib install flixel-addons
+          haxelib install flixel-ui
+          haxelib install flixel-tools
 
       - name: Setup Android SDK Manually
         run: |
