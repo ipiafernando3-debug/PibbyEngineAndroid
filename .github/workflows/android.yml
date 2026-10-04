@@ -33,8 +33,6 @@ jobs:
           haxelib install flixel-addons
           haxelib install flixel-ui
           haxelib install flixel-tools
-          haxelib run flixel setup -y
-          haxelib dev flixel $(haxelib path flixel | head -n 1 | sed 's/\/include\/$//')
 
       - name: Setup Android SDK Manually
         run: |
