@@ -15,13 +15,14 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Setup Haxe
-        uses: haxe-io/setup-haxe@v2
-        with:
-          haxe-version: '4.3.4'
-
-      - name: Configure Haxelib
+      - name: Install Haxe Directly
         run: |
+          HAXE_VERSION=4.3.4
+          curl -sL https://github.com/HaxeFoundation/haxe/releases/download/$HAXE_VERSION/haxe-$HAXE_VERSION-linux64.tar.gz -o haxe.tar.gz
+          tar -xf haxe.tar.gz
+          sudo mv haxe-$HAXE_VERSION-linux64 /opt/haxe
+          sudo ln -s /opt/haxe/haxe /usr/local/bin/haxe
+          sudo ln -s /opt/haxe/haxelib /usr/local/bin/haxelib
           mkdir -p ~/haxelib
           haxelib setup ~/haxelib
 
