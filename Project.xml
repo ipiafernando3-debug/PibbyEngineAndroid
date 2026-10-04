@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<!-- Metadata -->
+	<meta title="Pibby Engine" package="com.pibby.engine" version="1.0.0" company="BlackoutBenjamin" />
+	
+	<!-- Entry point -->
+	<app main="Main" file="PibbyEngine" path="export" />
+	
+	<!-- Window setup (Resolución optimizada para celular) -->
+	<window width="1280" height="720" background="#000000" fps="60" hardware="true" vsync="false" fullscreen="false" orientation="landscape" />
+	
+	<!-- Source paths -->
+	<source path="source" />
+	
+	<!-- Haxe Libraries -->
+	<haxelib name="flixel" />
+	<haxelib name="lime" />
+	<haxelib name="openfl" />
+	
+	<!-- Assets -->
+	<assets path="assets" rename="assets" />
+	
+	<!-- Android Specific Settings -->
+	<android tax-version="33" target-sdk-version="34" min-sdk-version="21" />
+	
+	<!-- Permissions -->
+	<app android:hardwareAccelerated="true" />
+</project>
