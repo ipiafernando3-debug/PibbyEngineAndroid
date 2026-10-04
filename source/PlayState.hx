@@ -66,15 +66,15 @@ class PlayState extends FlxState
         accuracyText.scrollFactor.set();
         add(accuracyText);
 
-        // Instrucción en pantalla[span_0](start_span)[span_0](end_span)
+        // Instrucción en pantalla
         var infoText = new FlxText(0, 300, 1280, "PIBBY ENGINE - EVENTOS Y NOTETYPES ACTIVOS", 20);
         infoText.setFormat("VCR OSD Mono", 20, FlxColor.PURPLE, CENTER);
         add(infoText);
 
-        // Añadir notas[span_1](start_span)[span_1](end_span)
+        // Añadir notas
         add(notes);
 
-        // Controles táctiles[span_2](start_span)[span_2](end_span)
+        // Controles táctiles
         virtualPad = new VirtualPad();
         add(virtualPad);
 
@@ -136,7 +136,7 @@ class PlayState extends FlxState
             daNote.x = baseX;
             daNote.y = targetY + (timeDifference * 0.45 * speed);
 
-            // Si la nota pasa de largo sin tocarse[span_3](start_span)[span_3](end_span)
+            // Si la nota pasa de largo sin tocarse
             if (timeDifference < -150 && !daNote.wasGoodHit)
             {
                 misses++;
@@ -150,7 +150,7 @@ class PlayState extends FlxState
             }
         });
 
-        // Detección táctil de botones[span_4](start_span)[span_4](end_span)
+        // Detección táctil de botones
         if (virtualPad.buttonLeft.justPressed) { checkHit(0); }
         if (virtualPad.buttonDown.justPressed) { checkHit(1); }
         if (virtualPad.buttonUp.justPressed) { checkHit(2); }
@@ -186,7 +186,7 @@ class PlayState extends FlxState
                         score += 350;
                         health += 2.5;
                         totalNotesHit++;
-                        FlxG.camera.flash(FlxColor.WHITE, 0.03);[span_5](start_span)[span_5](end_span)
+                        FlxG.camera.flash(FlxColor.WHITE, 0.03);
                     }
                     
                     scoreText.text = "SCORE: " + score;
@@ -203,7 +203,7 @@ class PlayState extends FlxState
         if (!foundNote) {
             score += 100;
             scoreText.text = "SCORE: " + score;
-            FlxG.camera.flash(FlxColor.WHITE, 0.05);[span_6](start_span)[span_6](end_span)
+            FlxG.camera.flash(FlxColor.WHITE, 0.05);
         }
     }
 
